@@ -1,0 +1,15 @@
+.gameCard {
+  display: flex;
+  text-align: center;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  margin: 10px 0 25px 0;
+}
+
+.gameCardBtn a {
+  text-decoration: none;
+  color: white;
+}

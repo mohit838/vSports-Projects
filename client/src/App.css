@@ -1,0 +1,55 @@
+/* Don't touch */
+.css-jzk4qw-MuiPaper-root-MuiAppBar-root,
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation4.MuiAppBar-root.MuiAppBar-colorPrimary.MuiAppBar-positionFixed.mui-fixed.css-ciy9n4-MuiPaper-root-MuiAppBar-root {
+  background-color: #323232 !important;
+}
+
+/* Dashboard Desing */
+.mainMenuDashboard {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.gamesNameLists {
+  display: flex;
+  text-align: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.gamesNameLists nav a {
+  text-decoration: none;
+  color: black;
+  margin: 5px;
+  padding: 7px;
+}
+
+.gamesNameLists nav a:hover {
+  background-color: black;
+  color: white;
+}
+
+.gameRegTeams {
+  margin: 30px;
+}
+
+/* Tournaments DashBoard Design */
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}

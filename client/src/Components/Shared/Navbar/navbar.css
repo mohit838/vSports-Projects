@@ -1,0 +1,16 @@
+.logo a {
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+  font-size: 25px;
+}
+
+.navBar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navBar nav > a {
+  text-decoration: none;
+  color: black;
+}
