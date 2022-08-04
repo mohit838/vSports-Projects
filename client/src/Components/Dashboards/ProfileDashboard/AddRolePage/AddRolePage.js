@@ -11,7 +11,7 @@ const AddRolePage = () => {
   const handleMakeAdmin = (e) => {
     const user = { getGId };
 
-    fetch("http://localhost:5000/api/user/admin", {
+    fetch("https://vsportsg.herokuapp.com/api/user/admin", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

@@ -34,7 +34,7 @@ const NewPlayers = () => {
       };
 
       //Send to the server
-      fetch("http://localhost:5000/api/new-player", {
+      fetch("https://vsportsg.herokuapp.com/api/new-player", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -54,7 +54,7 @@ const NewPlayers = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/players")
+    fetch("https://vsportsg.herokuapp.com/api/players")
       .then((res) => res.json())
       .then((data) => {
         setGetPlayers(data);

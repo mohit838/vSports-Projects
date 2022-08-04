@@ -5,7 +5,7 @@ const AllPlayers = () => {
   const [getPlayers, setGetPlayers] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/players")
+    fetch("https://vsportsg.herokuapp.com/api/players")
       .then((res) => res.json())
       .then((data) => {
         setGetPlayers(data);
