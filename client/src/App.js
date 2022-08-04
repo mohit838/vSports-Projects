@@ -40,13 +40,16 @@ function App() {
                 <Route path="four-team" element={<FourTeams />} />
                 <Route path="eight-team" element={<EightTeams />} />
               </Route>
+
               <Route path="profile" element={<ProfileDashboard />} />
               <Route path="tournament" element={<TournamentDashBoard />} />
+
               <Route path="team" element={<TeamDashboard />}>
                 <Route path="" element={<AllTeams />} />
                 <Route path="create-team" element={<NewTeam />} />
                 <Route path="create-moderator" element={<NewModerator />} />
               </Route>
+
               <Route path="player" element={<PlayerDashBoard />}>
                 <Route path="" element={<AllPlayers />} />
                 <Route path="create-player" element={<NewPlayers />} />
