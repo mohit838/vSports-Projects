@@ -15,12 +15,16 @@ import DashBoardHome from "./Components/Dashboards/DashboardSetup/DashBoardHome/
 import NewTeam from "./Components/Dashboards/TeamsDashboard/NewTeam/NewTeam";
 import AllTeams from "./Components/Dashboards/TeamsDashboard/AllTeams/AllTeams";
 import NewModerator from "./Components/Dashboards/TeamsDashboard/NewModerator/NewModerator";
-import AllPlayers from "./Components/Dashboards/ProfileDashboard/AllPlayers/AllPlayers";
+import AllPlayers from "./Components/Dashboards/PlayerDashbaord/AllPlayers/AllPlayers";
 import NewPlayers from "./Components/Dashboards/ProfileDashboard/NewPlayers/NewPlayers";
 import TwoTeams from "./Components/Dashboards/DashboardSetup/DashBoardHome/Bracket/Two/TwoTeams";
 import FourTeams from "./Components/Dashboards/DashboardSetup/DashBoardHome/Bracket/FourTeams/FourTeams";
 import EightTeams from "./Components/Dashboards/DashboardSetup/DashBoardHome/Bracket/EightTeams/EightTeams";
 import AddTeamForBracket from "./Components/Dashboards/DashboardSetup/DashBoardHome/Bracket/AddTeamForBracket/AddTeamForBracket";
+import CreateTournaments from "./Components/Dashboards/TournamentDashBoard/CreateTournaments/CreateTournaments";
+import DashboardContent from "./Components/Dashboards/DashboardSetup/DashBoardHome/DashboardContents/DashboardContent";
+import ProfileDetails from "./Components/Dashboards/ProfileDashboard/ProfileDetails/ProfileDetails";
+import AddRolePage from "./Components/Dashboards/ProfileDashboard/AddRolePage/AddRolePage";
 
 function App() {
   return (
@@ -35,14 +39,21 @@ function App() {
             {/* Dashboard Route*/}
             <Route path="dashboard" element={<Dashboard />}>
               <Route path="" element={<DashBoardHome />}>
-                <Route path="" element={<AddTeamForBracket />} />
+                <Route path="" element={<DashboardContent />} />
+              </Route>
+
+              <Route path="profile" element={<ProfileDashboard />}>
+                <Route path="" element={<ProfileDetails />} />
+                <Route path="add-role" element={<AddRolePage />} />
+              </Route>
+
+              <Route path="tournament" element={<TournamentDashBoard />}>
+                <Route path="" element={<CreateTournaments />} />
+                <Route path="add-team" element={<AddTeamForBracket />} />
                 <Route path="two-team" element={<TwoTeams />} />
                 <Route path="four-team" element={<FourTeams />} />
                 <Route path="eight-team" element={<EightTeams />} />
               </Route>
-
-              <Route path="profile" element={<ProfileDashboard />} />
-              <Route path="tournament" element={<TournamentDashBoard />} />
 
               <Route path="team" element={<TeamDashboard />}>
                 <Route path="" element={<AllTeams />} />

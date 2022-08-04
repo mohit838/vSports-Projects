@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import TeamEntry from "../TeamEntry/TeamEntry";
 import "./../onlyBracketDesign.css";
@@ -26,22 +26,23 @@ const TwoTeams = () => {
 
   return (
     <>
-      <Button onClick={() => handleNumber(2)}>Two</Button>
-
       <div className="MatchMenu">
-        <div className="nextRoundBtn">
-          <button onClick={handleNextRound}>Next Round</button>
-        </div>
-        <div className="nextRoundBtn">
-          <button onClick={handleSetWinner}>Winner</button>
-        </div>
+        <Button onClick={() => handleNumber(2)}>First Round</Button>
+        <Button onClick={handleNextRound}>Final Round</Button>
+        <Button onClick={handleSetWinner}>Winner</Button>
+        <Button>Current Entry</Button>
+        <Button>Delete</Button>
       </div>
 
       <div className="graphDesign">
         <div className="firstRoundDesign">
           {numbers === 2 ? (
             <>
+              <Typography variant="h6" gutterBottom component="div">
+                First Round
+              </Typography>
               <TeamEntry></TeamEntry>
+              <br />
               <br />
               <TeamEntry></TeamEntry>
             </>
@@ -53,6 +54,9 @@ const TwoTeams = () => {
         <div className="nextRoundDesign">
           {nextRound && numbers === 2 ? (
             <>
+              <Typography variant="h6" gutterBottom component="div">
+                Final Round
+              </Typography>
               <TeamEntry></TeamEntry>
             </>
           ) : (
@@ -60,13 +64,35 @@ const TwoTeams = () => {
           )}
         </div>
 
-        <div className="nextRoundDesign">
+        <div className="winnerRoundDesign">
           {winner && numbers === 2 ? (
             <>
+              <Typography variant="h6" gutterBottom component="div">
+                Winner
+              </Typography>
               <form onClick={handleWinner}>
-                <input type="text" placeholder="Team Name" />
-                <input type="text" placeholder="Team Point" />
-                <button type="submit">Update</button>
+                <TextField
+                  required
+                  id="standard-basic"
+                  label="Team Name"
+                  name="teamWinner"
+                  type="text"
+                  variant="standard"
+                />
+                <TextField
+                  required
+                  id="standard-basic"
+                  label="Point"
+                  name="teamPointWinner"
+                  type="number"
+                  variant="standard"
+                />
+                <Button
+                  style={{ color: "black", textTransform: "capitalize" }}
+                  variant="text"
+                >
+                  Winner
+                </Button>
               </form>
             </>
           ) : (

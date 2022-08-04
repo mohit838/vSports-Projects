@@ -2,7 +2,7 @@ import React from "react";
 import { Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import { MDBTypography } from "mdb-react-ui-kit";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 const DashBoardHome = () => {
   return (
@@ -14,24 +14,9 @@ const DashBoardHome = () => {
               tag="div"
               className="display-6 pb-3 mb-3 border-bottom text-center"
             >
-              Match Overview
+              Overviews
             </MDBTypography>
-
-            {/* Brackets Pair */}
-
-            <div className="gamesNameLists">
-              <nav>
-                <Link to="">Add Team</Link>
-                <Link to="two-team">Two Team</Link>
-                <Link to="four-team">Four Team</Link>
-                <Link to="eight-team">Eight Team</Link>
-              </nav>
-            </div>
-            <div className="graphDesign">
-              <div className="firstRoundDesign">
-                <Outlet />
-              </div>
-            </div>
+            <Outlet />
           </Grid>
         </Grid>
       </Box>

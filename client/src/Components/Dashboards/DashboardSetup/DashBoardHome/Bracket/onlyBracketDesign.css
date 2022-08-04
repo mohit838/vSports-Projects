@@ -1,0 +1,39 @@
+.MatchMenu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  padding: 7px;
+}
+
+.MatchMenu > Button {
+  color: black;
+  padding: 5px;
+  margin: 5px;
+}
+.MatchMenu > Button:hover {
+  background-color: black;
+  color: white;
+}
+
+.graphDesign {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.sigleTeam {
+  margin: 10px 0;
+}
+
+.sigleTeam > form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.winnerRoundDesign {
+  text-align: center;
+  margin: 20px auto;
+}

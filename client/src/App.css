@@ -47,3 +47,11 @@ th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+
+.roleContent {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-around;
+  margin-top: 50px;
+}

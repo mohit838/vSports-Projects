@@ -1,3 +1,4 @@
+import { Button, TextField } from "@mui/material";
 import React from "react";
 
 const TeamEntry = () => {
@@ -10,16 +11,54 @@ const TeamEntry = () => {
       <div className="groupsInTwo">
         <div className="sigleTeam">
           <form onClick={handleFirstRound}>
-            <input type="text" placeholder="Team Name" />
-            <input type="text" placeholder="Team Point" />
-            <button type="submit">Update</button>
+            <TextField
+              required
+              id="standard-basic"
+              label="Team Name"
+              name="teamOne"
+              type="text"
+              variant="standard"
+            />
+            <TextField
+              required
+              id="standard-basic"
+              label="Point"
+              name="teamPointOne"
+              type="number"
+              variant="standard"
+            />
+            <Button
+              style={{ color: "black", textTransform: "capitalize" }}
+              variant="text"
+            >
+              Update
+            </Button>
           </form>
         </div>
         <div className="sigleTeam">
           <form onClick={handleFirstRound}>
-            <input type="text" placeholder="Team Name" />
-            <input type="text" placeholder="Team Point" />
-            <button type="submit">Update</button>
+            <TextField
+              required
+              id="standard-basic"
+              label="Team Name"
+              name="teamTwo"
+              type="text"
+              variant="standard"
+            />
+            <TextField
+              required
+              id="standard-basic"
+              label="Point"
+              name="teamPointTwo"
+              type="number"
+              variant="standard"
+            />
+            <Button
+              style={{ color: "black", textTransform: "capitalize" }}
+              variant="text"
+            >
+              Update
+            </Button>
           </form>
         </div>
       </div>

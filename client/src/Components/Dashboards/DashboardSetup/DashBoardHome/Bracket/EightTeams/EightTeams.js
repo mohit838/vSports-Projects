@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import TeamEntry from "../TeamEntry/TeamEntry";
 import "./../onlyBracketDesign.css";
@@ -36,43 +36,43 @@ const EightTeams = () => {
 
   return (
     <>
-      <Button onClick={() => handleNumber(8)}>Eight</Button>
-
       <div className="MatchMenu">
-        <div className="nextRoundBtn">
-          <button onClick={handleNextRound}>Next Round</button>
-        </div>
-
-        <div className="nextRoundBtn">
-          <button onClick={handleNextRoundTwo}>Next Round Two</button>
-        </div>
-
-        <div className="nextRoundBtn">
-          <button onClick={handleNextRoundThree}>Next Round Three</button>
-        </div>
-
-        <div className="nextRoundBtn">
-          <button onClick={handleSetWinner}>Winner</button>
-        </div>
+        <Button onClick={() => handleNumber(8)}>First Round</Button>
+        <Button onClick={handleNextRound}>Second Round</Button>
+        <Button onClick={handleNextRoundTwo}>Third Round</Button>
+        <Button onClick={handleNextRoundThree}>Final Round</Button>
+        <Button onClick={handleSetWinner}>Winner</Button>
+        <Button>Current Entry</Button>
+        <Button>Delete</Button>
       </div>
 
       <div className="graphDesign">
         <div className="firstRoundDesign">
           {numbers === 8 ? (
             <>
+              <Typography variant="h6" gutterBottom component="div">
+                First Round
+              </Typography>
               <TeamEntry></TeamEntry>
+              <br />
               <br />
               <TeamEntry></TeamEntry>
               <br />
-              <TeamEntry></TeamEntry>
               <br />
               <TeamEntry></TeamEntry>
               <br />
-              <TeamEntry></TeamEntry>
               <br />
               <TeamEntry></TeamEntry>
               <br />
+              <br />
               <TeamEntry></TeamEntry>
+              <br />
+              <br />
+              <TeamEntry></TeamEntry>
+              <br />
+              <br />
+              <TeamEntry></TeamEntry>
+              <br />
               <br />
               <TeamEntry></TeamEntry>
             </>
@@ -84,11 +84,17 @@ const EightTeams = () => {
         <div className="nextRoundDesign">
           {nextRound && numbers === 8 ? (
             <>
+              <Typography variant="h6" gutterBottom component="div">
+                Second Round
+              </Typography>
               <TeamEntry></TeamEntry>
+              <br />
               <br />
               <TeamEntry></TeamEntry>
               <br />
+              <br />
               <TeamEntry></TeamEntry>
+              <br />
               <br />
               <TeamEntry></TeamEntry>
             </>
@@ -100,7 +106,11 @@ const EightTeams = () => {
         <div className="firstRoundDesign">
           {nextRoundTwo && numbers === 8 ? (
             <>
+              <Typography variant="h6" gutterBottom component="div">
+                Third Round
+              </Typography>
               <TeamEntry></TeamEntry>
+              <br />
               <br />
               <TeamEntry></TeamEntry>
             </>
@@ -109,9 +119,12 @@ const EightTeams = () => {
           )}
         </div>
 
-        <div className="nextRoundDesign">
+        <div className="winnerRoundDesign">
           {nextRoundThree && numbers === 8 ? (
             <>
+              <Typography variant="h6" gutterBottom component="div">
+                Final Round
+              </Typography>
               <TeamEntry></TeamEntry>
             </>
           ) : (
@@ -119,13 +132,35 @@ const EightTeams = () => {
           )}
         </div>
 
-        <div className="nextRoundDesign">
+        <div className="winnerRoundDesign">
           {winner && numbers === 8 ? (
             <>
+              <Typography variant="h6" gutterBottom component="div">
+                Winner Round
+              </Typography>
               <form onClick={handleWinner}>
-                <input type="text" placeholder="Team Name" />
-                <input type="text" placeholder="Team Point" />
-                <button type="submit">Update</button>
+                <TextField
+                  required
+                  id="standard-basic"
+                  label="Team Name"
+                  name="teamWinner"
+                  type="text"
+                  variant="standard"
+                />
+                <TextField
+                  required
+                  id="standard-basic"
+                  label="Point"
+                  name="teamPointWinner"
+                  type="number"
+                  variant="standard"
+                />
+                <Button
+                  style={{ color: "black", textTransform: "capitalize" }}
+                  variant="text"
+                >
+                  Winner
+                </Button>
               </form>
             </>
           ) : (
