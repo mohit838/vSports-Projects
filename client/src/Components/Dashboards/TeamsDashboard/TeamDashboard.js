@@ -5,7 +5,7 @@ import { Link, Outlet } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 
 const TeamDashboard = () => {
-  const { admin, moderator, guest } = useAuth();
+  const { admin, moderator } = useAuth();
 
   return (
     <>
@@ -22,12 +22,11 @@ const TeamDashboard = () => {
             <Link to="">Team List</Link>
             {admin && (
               <>
-                {moderator && !guest && (
-                  <Link to="create-team">Create Team</Link>
-                )}
+                <Link to="create-team">Create Team</Link>
                 <Link to="create-moderator">Create Moderator</Link>
               </>
             )}
+            {moderator && <Link to="create-team">Create Team</Link>}
           </nav>
         </div>
       </Box>

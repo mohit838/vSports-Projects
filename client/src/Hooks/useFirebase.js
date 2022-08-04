@@ -18,7 +18,6 @@ const useFirebase = () => {
   const [authError, setAuthError] = useState("");
   const [admin, setAdmin] = useState(false);
   const [moderator, setModerator] = useState(false);
-  const [guest, setGuest] = useState(true);
 
   const auth = getAuth();
 
@@ -98,9 +97,9 @@ const useFirebase = () => {
       .then((data) => {
         if (data.admin) {
           setAdmin(true);
-        } else {
+        }
+        if (data.moderator) {
           setModerator(true);
-          setGuest(false);
         }
       });
   }, [user.email]);
@@ -138,7 +137,6 @@ const useFirebase = () => {
     user,
     admin,
     moderator,
-    guest,
     isLoading,
     createNewUser,
     authError,
