@@ -8,7 +8,6 @@ const ProfileDetails = () => {
     <div>
       <h1>Profile Details</h1>
       <h3>Name: {user.displayName}</h3>
-      <h4>vID: {user.vid}</h4>
     </div>
   );
 };
