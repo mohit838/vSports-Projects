@@ -9,8 +9,23 @@ const AddRolePage = () => {
   };
 
   const handleMakeAdmin = (e) => {
+    const user = { getGId };
+
+    fetch("http://localhost:5000/api/user/admin", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+
     e.preventDefault();
   };
+
   const handleMakeModerator = (e) => {
     e.preventDefault();
   };

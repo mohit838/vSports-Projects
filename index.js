@@ -51,7 +51,13 @@ async function run() {
     // ======================================
     app.put("/api/user/admin", async (req, res) => {
       const user = req.body;
-      const filter = { gid };
+      console.log(user);
+      const filter = { vid: user.vid };
+      const updateDoc = { $set: { role: "admin" } };
+      const result = await userInfoCollections.updateOne(filter, updateDoc);
+
+      // Sending Acknowledgement to Frontend
+      res.json(result);
     });
 
     // ======================================
