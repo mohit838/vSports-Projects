@@ -93,7 +93,7 @@ run().catch(console.dir);
 
 // To Check Get API
 app.get("/", (req, res) => {
-  res.send("MERN Tutorial Server!");
+  res.send("vSports Tutorial Server!");
 });
 
 // Listening Port
