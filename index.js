@@ -30,21 +30,21 @@ async function run() {
     // New Team Collection
     const newTeamCollections = databaseName.collection("Teams");
 
-    // Profile Collection
-    const userInfoCollections = databaseName.collection("userProfiles");
+    // // Profile Collection
+    // const userInfoCollections = databaseName.collection("userProfiles");
 
     // ======================================
     // New Players
     // ======================================
 
-    // Post User Info
-    app.post("/api/user", async (req, res) => {
-      const newUserInfo = req.body;
-      const result = await userInfoCollections.insertOne(newUserInfo);
+    // // Post User Info
+    // app.post("/api/user", async (req, res) => {
+    //   const newUserInfo = req.body;
+    //   const result = await userInfoCollections.insertOne(newUserInfo);
 
-      // Sending Acknowledgement to Frontend
-      res.json(result);
-    });
+    //   // Sending Acknowledgement to Frontend
+    //   res.json(result);
+    // });
 
     // ======================================
     // New Players

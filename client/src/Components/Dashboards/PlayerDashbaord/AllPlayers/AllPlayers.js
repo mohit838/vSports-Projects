@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Container, Grid } from "@mui/material";
 
 const AllPlayers = () => {
+  const [getPlayers, setGetPlayers] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/players")
+      .then((res) => res.json())
+      .then((data) => {
+        setGetPlayers(data);
+      });
+  }, []);
+
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -12,53 +22,22 @@ const AllPlayers = () => {
                 <table>
                   <tr>
                     <th>Players Name</th>
-                    <th>Moderator</th>
+                    <th>gID</th>
+                    <th>Team</th>
                     <th>Sports</th>
                     <th>Update</th>
                     <th>Delete</th>
                   </tr>
-                  <tr>
-                    <td>Alfreds</td>
-                    <td>Maria Anders</td>
-                    <td>Valorant</td>
-                    <td>Update</td>
-                    <td>Delete</td>
-                  </tr>
-                  <tr>
-                    <td>Centro </td>
-                    <td>Francisco Chang</td>
-                    <td>Cricket</td>
-                    <td>Update</td>
-                    <td>Delete</td>
-                  </tr>
-                  <tr>
-                    <td>Ernst</td>
-                    <td>Roland Mendel</td>
-                    <td>Football</td>
-                    <td>Update</td>
-                    <td>Delete</td>
-                  </tr>
-                  <tr>
-                    <td>Island</td>
-                    <td>Helen Bennett</td>
-                    <td>Valorant</td>
-                    <td>Update</td>
-                    <td>Delete</td>
-                  </tr>
-                  <tr>
-                    <td>Laughing</td>
-                    <td>Yoshi Tannamuri</td>
-                    <td>Cricket</td>
-                    <td>Update</td>
-                    <td>Delete</td>
-                  </tr>
-                  <tr>
-                    <td>Magazzini</td>
-                    <td>Giovanni Rovelli</td>
-                    <td>Football</td>
-                    <td>Update</td>
-                    <td>Delete</td>
-                  </tr>
+                  {getPlayers.map((player) => (
+                    <tr key={player._id}>
+                      <td>{player.playerName}</td>
+                      <td>{player.gId}</td>
+                      <td>N/A</td>
+                      <td>{player.sportsName}</td>
+                      <td>Update</td>
+                      <td>Delete</td>
+                    </tr>
+                  ))}
                 </table>
               </div>
             </Grid>

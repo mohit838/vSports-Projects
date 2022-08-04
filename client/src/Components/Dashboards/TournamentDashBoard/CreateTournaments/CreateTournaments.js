@@ -54,7 +54,7 @@ const CreateTournaments = () => {
             </form>
           </Grid>
           <Grid sx={{ width: 1, mt: 10 }} item xs={12} md={6}>
-            <h1 style={{ textAlign: "center" }}>Tournament Lists</h1>
+            <h1 style={{ textAlign: "center" }}>Tournaments List</h1>
 
             <div className="tableOfTournamentsList">
               <table>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Button, Container, Grid, TextField } from "@mui/material";
 // import Radio from "@mui/material/Radio";
 // import RadioGroup from "@mui/material/RadioGroup";
@@ -14,23 +14,52 @@ const initialPlayerInfo = {
 
 const NewPlayers = () => {
   const [newPlayers, setNewPlayers] = useState(initialPlayerInfo);
+  const [getPlayers, setGetPlayers] = useState([]);
 
-  const handleRegSubmit = (e) => {
-    // Collect data
-
-    // Send server
-
-    e.preventDefault();
-  };
   const handleOnBlur = (e) => {
     const field = e.target.name;
     const value = e.target.value;
     const newInfo = { ...newPlayers };
     newInfo[field] = value;
     setNewPlayers(newInfo);
-
-    console.log(newPlayers);
   };
+
+  const handleRegSubmit = (e) => {
+    const procced = window.confirm("Wanna Create New Player???");
+
+    if (procced) {
+      ///Collect Data
+      const newPlayersData = {
+        ...newPlayers,
+      };
+
+      //Send to the server
+      fetch("http://localhost:5000/api/new-player", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newPlayersData),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          // Get Acknoledge for data reciving and show
+          if (data.insertedId) {
+            window.alert("Inserted Successfully.");
+          }
+        });
+    }
+
+    e.preventDefault();
+  };
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/players")
+      .then((res) => res.json())
+      .then((data) => {
+        setGetPlayers(data);
+      });
+  }, []);
 
   return (
     <>
@@ -120,7 +149,7 @@ const NewPlayers = () => {
               </form>
             </Grid>
             <Grid sx={{ width: 1, mt: 10 }} item xs={12} md={6}>
-              <h1 style={{ textAlign: "center" }}>Team Lists</h1>
+              <h1 style={{ textAlign: "center" }}>Players List</h1>
 
               <div className="tableOfContents">
                 <table>
@@ -131,48 +160,16 @@ const NewPlayers = () => {
                     <th>Update</th>
                     <th>Delete</th>
                   </tr>
-                  <tr>
-                    <td>Alfreds</td>
-                    <td>Maria Anders</td>
-                    <td>Valorant</td>
-                    <td>Update</td>
-                    <td>Delete</td>
-                  </tr>
-                  <tr>
-                    <td>Centro </td>
-                    <td>Francisco Chang</td>
-                    <td>Cricket</td>
-                    <td>Update</td>
-                    <td>Delete</td>
-                  </tr>
-                  <tr>
-                    <td>Ernst</td>
-                    <td>Roland Mendel</td>
-                    <td>Football</td>
-                    <td>Update</td>
-                    <td>Delete</td>
-                  </tr>
-                  <tr>
-                    <td>Island</td>
-                    <td>Helen Bennett</td>
-                    <td>Valorant</td>
-                    <td>Update</td>
-                    <td>Delete</td>
-                  </tr>
-                  <tr>
-                    <td>Laughing</td>
-                    <td>Yoshi Tannamuri</td>
-                    <td>Cricket</td>
-                    <td>Update</td>
-                    <td>Delete</td>
-                  </tr>
-                  <tr>
-                    <td>Magazzini</td>
-                    <td>Giovanni Rovelli</td>
-                    <td>Football</td>
-                    <td>Update</td>
-                    <td>Delete</td>
-                  </tr>
+
+                  {getPlayers.map((player) => (
+                    <tr key={player._id}>
+                      <td>{player.playerName}</td>
+                      <td>{player.gId}</td>
+                      <td>{player.sportsName}</td>
+                      <td>Update</td>
+                      <td>Delete</td>
+                    </tr>
+                  ))}
                 </table>
               </div>
             </Grid>
