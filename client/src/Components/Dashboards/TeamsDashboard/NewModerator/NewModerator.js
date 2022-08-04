@@ -12,7 +12,7 @@ const NewModerator = () => {
   const handleMakeModerator = (e) => {
     const user = { getGId };
 
-    fetch("http://localhost:5000/api/user/moderator", {
+    fetch("https://vsportsg.herokuapp.com/api/user/moderator", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -29,7 +29,7 @@ const NewModerator = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/mod-list")
+    fetch("https://vsportsg.herokuapp.com/api/mod-list")
       .then((res) => res.json())
       .then((data) => {
         setGetMod(data);

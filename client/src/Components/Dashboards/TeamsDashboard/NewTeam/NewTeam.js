@@ -29,7 +29,7 @@ const NewTeam = () => {
       };
 
       //Send to the server
-      fetch("http://localhost:5000/api/new-team", {
+      fetch("https://vsportsg.herokuapp.com/api/new-team", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -49,7 +49,7 @@ const NewTeam = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/teams")
+    fetch("https://vsportsg.herokuapp.com/api/teams")
       .then((res) => res.json())
       .then((data) => {
         setGetTeams(data);
