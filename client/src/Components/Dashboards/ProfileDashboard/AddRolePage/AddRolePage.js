@@ -1,33 +1,52 @@
 import { Box, Button, TextField } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 
 const AddRolePage = () => {
+  const [getGId, setGetGId] = useState();
+
+  const handleOnBlur = (e) => {
+    setGetGId(e.target.value);
+  };
+
+  const handleMakeAdmin = (e) => {
+    e.preventDefault();
+  };
+  const handleMakeModerator = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <>
       <Box>
         <div className="roleContent">
           <div className="makeAdmin">
-            <TextField
-              required
-              id="standard-basic"
-              label="vID"
-              name="makeAdmin"
-              type="number"
-              variant="standard"
-            />
-            <Button variant="contained">Make Admin</Button>
+            <form onSubmit={handleMakeAdmin}>
+              <TextField
+                required
+                id="standard-basic"
+                label="vID"
+                name="admin"
+                type="number"
+                variant="standard"
+                onBlur={handleOnBlur}
+              />
+              <Button variant="contained">Create Admin</Button>
+            </form>
           </div>
 
           <div className="makeModerator">
-            <TextField
-              required
-              id="standard-basic"
-              label="vID"
-              name="makeModerator"
-              type="number"
-              variant="standard"
-            />
-            <Button variant="contained">Make Moderator</Button>
+            <form onSubmit={handleMakeModerator}>
+              <TextField
+                required
+                id="standard-basic"
+                label="vID"
+                name="moderator"
+                type="number"
+                variant="standard"
+                onBlur={handleOnBlur}
+              />
+              <Button variant="contained">Create Moderator</Button>
+            </form>
           </div>
         </div>
       </Box>

@@ -32,7 +32,13 @@ const Registration = () => {
       window.alert("Not Matched Password!");
       return;
     }
-    createNewUser(regData.name, regData.email, regData.password, navigate);
+    createNewUser(
+      regData.name,
+      regData.email,
+      regData.password,
+      regData.vid,
+      navigate
+    );
 
     e.preventDefault();
   };
@@ -65,6 +71,16 @@ const Registration = () => {
                   variant="standard"
                   name="email"
                   type="email"
+                  onBlur={handleOnBlur}
+                />
+                <TextField
+                  required
+                  sx={{ width: "75%", mt: 3 }}
+                  id="standard-basic"
+                  label="vID"
+                  variant="standard"
+                  name="vid"
+                  type="number"
                   onBlur={handleOnBlur}
                 />
                 <TextField

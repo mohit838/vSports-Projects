@@ -47,6 +47,14 @@ async function run() {
     });
 
     // ======================================
+    // Creating Role
+    // ======================================
+    app.put("/api/user/admin", async (req, res) => {
+      const user = req.body;
+      const filter = { gid };
+    });
+
+    // ======================================
     // New Players
     // ======================================
 

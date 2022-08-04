@@ -20,7 +20,7 @@ const useFirebase = () => {
   const auth = getAuth();
 
   //LogIn User Using Email
-  const createNewUser = (name, email, password, navigate) => {
+  const createNewUser = (name, email, password, vid, navigate) => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -29,7 +29,7 @@ const useFirebase = () => {
         setUser(newUser);
 
         // Send User to Backend
-        saveUserData(email, name);
+        saveUserData(email, name, vid);
 
         // Must set display name
         updateProfile(auth.currentUser, {
@@ -105,8 +105,8 @@ const useFirebase = () => {
       });
   };
 
-  const saveUserData = (email, displayName) => {
-    const user = { email, displayName };
+  const saveUserData = (email, displayName, vid) => {
+    const user = { email, displayName, vid };
 
     fetch("http://localhost:5000/api/user", {
       method: "POST",
