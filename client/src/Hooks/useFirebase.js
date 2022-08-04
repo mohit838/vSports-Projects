@@ -17,6 +17,8 @@ const useFirebase = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [authError, setAuthError] = useState("");
   const [admin, setAdmin] = useState(false);
+  const [moderator, setModerator] = useState(false);
+  const [guest, setGuest] = useState(true);
 
   const auth = getAuth();
 
@@ -89,13 +91,16 @@ const useFirebase = () => {
     return () => unSubcribed;
   }, [auth]);
 
-  // To Control Role bsed actions
+  // To Control Admin Role bsed actions
   useEffect(() => {
     fetch(`http://localhost:5000/api/users/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.admin) {
           setAdmin(true);
+        } else {
+          setModerator(true);
+          setGuest(false);
         }
       });
   }, [user.email]);
@@ -132,6 +137,8 @@ const useFirebase = () => {
   return {
     user,
     admin,
+    moderator,
+    guest,
     isLoading,
     createNewUser,
     authError,

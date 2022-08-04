@@ -44,17 +44,13 @@ async function run() {
       const user = await userInfoCollections.findOne(query);
 
       let isAdmin = false;
-      let isModerator = false;
 
       if (user?.role === "admin") {
         isAdmin = true;
       }
-      if (user?.role === "moderator") {
-        isModerator = true;
-      }
 
       // Sending Acknowledgement to Frontend
-      res.json({ admin: isAdmin, moderator: isModerator });
+      res.json({ admin: isAdmin });
     });
 
     // Get User Moderator Role Info
