@@ -1,9 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Button, Container, Grid, TextField } from "@mui/material";
 
 const NewModerator = () => {
-  const handleRegSubmit = () => {};
-  const handleOnBlur = () => {};
+  const [getGId, setGetGId] = useState();
+  const [getMod, setGetMod] = useState([]);
+
+  const handleOnBlur = (e) => {
+    setGetGId(e.target.value);
+  };
+
+  const handleMakeModerator = (e) => {
+    const user = { getGId };
+
+    fetch("http://localhost:5000/api/user/moderator", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          window.alert("Create moderator successfully.");
+        }
+      });
+    e.preventDefault();
+  };
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/mod-list")
+      .then((res) => res.json())
+      .then((data) => {
+        setGetMod(data);
+      });
+  }, []);
 
   return (
     <>
@@ -11,24 +42,17 @@ const NewModerator = () => {
         <Container sx={{ flexGrow: 1 }}>
           <Grid container spacing={2}>
             <Grid sx={{ width: 1, mt: 10 }} item xs={12} md={6}>
-              <form onSubmit={handleRegSubmit}>
+              <form onSubmit={handleMakeModerator}>
                 <TextField
                   required
-                  sx={{ width: "75%", mt: 3 }}
                   id="standard-basic"
-                  label="Moderator ID"
-                  variant="standard"
-                  name="moderatorId"
+                  label="vID"
+                  name="moderator"
                   type="number"
+                  variant="standard"
                   onBlur={handleOnBlur}
                 />
-
-                <br></br>
-                <Button
-                  sx={{ width: "75%", mt: 5 }}
-                  type="submit"
-                  variant="contained"
-                >
+                <Button type="submit" variant="contained">
                   Create Moderator
                 </Button>
               </form>
@@ -40,46 +64,19 @@ const NewModerator = () => {
                 <table>
                   <tr>
                     <th>Moderator</th>
-                    <th>Sports</th>
+                    <th>vID</th>
                     <th>Update</th>
                     <th>Delete</th>
                   </tr>
-                  <tr>
-                    <td>Maria Anders</td>
-                    <td>Valorant</td>
-                    <td>Update</td>
-                    <td>Delete</td>
-                  </tr>
-                  <tr>
-                    <td>Francisco Chang</td>
-                    <td>Cricket</td>
-                    <td>Update</td>
-                    <td>Delete</td>
-                  </tr>
-                  <tr>
-                    <td>Roland Mendel</td>
-                    <td>Football</td>
-                    <td>Update</td>
-                    <td>Delete</td>
-                  </tr>
-                  <tr>
-                    <td>Helen Bennett</td>
-                    <td>Valorant</td>
-                    <td>Update</td>
-                    <td>Delete</td>
-                  </tr>
-                  <tr>
-                    <td>Yoshi Tannamuri</td>
-                    <td>Cricket</td>
-                    <td>Update</td>
-                    <td>Delete</td>
-                  </tr>
-                  <tr>
-                    <td>Giovanni Rovelli</td>
-                    <td>Football</td>
-                    <td>Update</td>
-                    <td>Delete</td>
-                  </tr>
+
+                  {getMod.map((mod) => (
+                    <tr key={mod._id}>
+                      <td>{mod.displayName}</td>
+                      <td>{mod.vid}</td>
+                      <td>Update</td>
+                      <td>Delete</td>
+                    </tr>
+                  ))}
                 </table>
               </div>
             </Grid>

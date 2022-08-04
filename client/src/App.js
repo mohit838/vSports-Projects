@@ -25,6 +25,7 @@ import ProfileDetails from "./Components/Dashboards/ProfileDashboard/ProfileDeta
 import AddRolePage from "./Components/Dashboards/ProfileDashboard/AddRolePage/AddRolePage";
 import AllPlayers from "./Components/Dashboards/PlayerDashbaord/AllPlayers/AllPlayers";
 import NewPlayers from "./Components/Dashboards/PlayerDashbaord/NewPlayers/NewPlayers";
+import YourTournaments from "./Components/Dashboards/TournamentDashBoard/YourTournaments/YourTournaments";
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
                 <Route path="two-team" element={<TwoTeams />} />
                 <Route path="four-team" element={<FourTeams />} />
                 <Route path="eight-team" element={<EightTeams />} />
+                <Route path="" element={<YourTournaments />} />
               </Route>
 
               <Route path="team" element={<TeamDashboard />}>

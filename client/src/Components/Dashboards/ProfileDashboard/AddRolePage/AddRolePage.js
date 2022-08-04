@@ -28,25 +28,6 @@ const AddRolePage = () => {
     e.preventDefault();
   };
 
-  const handleMakeModerator = (e) => {
-    const user = { getGId };
-
-    fetch("http://localhost:5000/api/user/moderator", {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(user),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount) {
-          window.alert("Create moderator successfully.");
-        }
-      });
-    e.preventDefault();
-  };
-
   return (
     <>
       <Box>
@@ -64,23 +45,6 @@ const AddRolePage = () => {
               />
               <Button type="submit" variant="contained">
                 Create Admin
-              </Button>
-            </form>
-          </div>
-
-          <div className="makeModerator">
-            <form onSubmit={handleMakeModerator}>
-              <TextField
-                required
-                id="standard-basic"
-                label="vID"
-                name="moderator"
-                type="number"
-                variant="standard"
-                onBlur={handleOnBlur}
-              />
-              <Button type="submit" variant="contained">
-                Create Moderator
               </Button>
             </form>
           </div>

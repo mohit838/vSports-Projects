@@ -2,8 +2,11 @@ import { Box } from "@mui/material";
 import { MDBTypography } from "mdb-react-ui-kit";
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
 
 const ProfileDashboard = () => {
+  const { admin } = useAuth();
+
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -16,7 +19,7 @@ const ProfileDashboard = () => {
         <div className="gamesNameLists">
           <nav>
             <Link to="">Profile Details</Link>
-            <Link to="add-role">Create Role</Link>
+            {admin && <Link to="add-role">Create Role</Link>}
           </nav>
         </div>
         <div className="pb-3 mb-3 border-bottom"></div>

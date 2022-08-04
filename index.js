@@ -37,20 +37,34 @@ async function run() {
     // Users Data
     // ======================================
 
-    // Get User Info
+    // Get User Admin Role Info
     app.get("/api/users/:email", async (req, res) => {
       const email = req.params.email;
       const query = { email: email };
       const user = await userInfoCollections.findOne(query);
 
       let isAdmin = false;
+      let isModerator = false;
 
       if (user?.role === "admin") {
         isAdmin = true;
       }
+      if (user?.role === "moderator") {
+        isModerator = true;
+      }
 
       // Sending Acknowledgement to Frontend
-      res.json({ admin: isAdmin });
+      res.json({ admin: isAdmin, moderator: isModerator });
+    });
+
+    // Get User Moderator Role Info
+    app.get("/api/mod-list", async (req, res) => {
+      const query = { role: "moderator" };
+      const allMod = userInfoCollections.find(query);
+      const allModsData = await allMod.toArray();
+
+      // Sending Acknowledgement to Frontend
+      res.send(allModsData);
     });
 
     // Post User Info
