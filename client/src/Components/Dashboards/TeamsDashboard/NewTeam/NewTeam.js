@@ -4,6 +4,7 @@ import { Box, Button, Container, Grid, TextField } from "@mui/material";
 const initialTeamInfo = {
   teamName: "",
   sportsName: "",
+  teamMod: "",
 };
 
 const NewTeam = () => {
@@ -82,6 +83,16 @@ const NewTeam = () => {
                   type="text"
                   onBlur={handleOnBlur}
                 />
+                <TextField
+                  required
+                  sx={{ width: "75%", mt: 5 }}
+                  id="standard-basic"
+                  label="Moderator Name"
+                  variant="standard"
+                  name="teamMod"
+                  type="text"
+                  onBlur={handleOnBlur}
+                />
 
                 <br></br>
                 <Button
@@ -108,7 +119,7 @@ const NewTeam = () => {
                   {getTeams.map((team) => (
                     <tr key={team._id}>
                       <td>{team.teamName}</td>
-                      <td>N/A</td>
+                      <td>{team.teamMod}</td>
                       <td>{team.sportsName}</td>
                       <td>Update</td>
                       <td>Delete</td>

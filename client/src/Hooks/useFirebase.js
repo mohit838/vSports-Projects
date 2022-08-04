@@ -17,7 +17,6 @@ const useFirebase = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [authError, setAuthError] = useState("");
   const [admin, setAdmin] = useState(false);
-  const [moderator, setModerator] = useState(false);
 
   const auth = getAuth();
 
@@ -27,7 +26,7 @@ const useFirebase = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         setAuthError("");
-        const newUser = { email, displayName: name, vid };
+        const newUser = { email, displayName: name };
         setUser(newUser);
 
         // Send User to Backend
@@ -92,18 +91,14 @@ const useFirebase = () => {
 
   // To Control Role bsed actions
   useEffect(() => {
-    fetch(`http://localhost:5000//api/users/${user.vid}`)
+    fetch(`http://localhost:5000/api/users/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.admin) {
-          setAdmin(data.admin);
-        }
-
-        if (data.moderator) {
-          setModerator(data.moderator);
+          setAdmin(true);
         }
       });
-  }, [user.vid]);
+  }, [user.email]);
 
   //SignOut User
   const logOut = (location, navigate) => {
@@ -137,7 +132,6 @@ const useFirebase = () => {
   return {
     user,
     admin,
-    moderator,
     isLoading,
     createNewUser,
     authError,

@@ -30,7 +30,7 @@ const AllTeams = () => {
                   {getTeams.map((team) => (
                     <tr key={team._id}>
                       <td>{team.teamName}</td>
-                      <td>N/A</td>
+                      <td>{team.teamMod}</td>
                       <td>{team.sportsName}</td>
                       <td>Update</td>
                       <td>Delete</td>
