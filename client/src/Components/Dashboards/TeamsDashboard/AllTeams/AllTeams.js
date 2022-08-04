@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Container, Grid } from "@mui/material";
 
 const AllTeams = () => {
+  const [getTeams, setGetTeams] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/teams")
+      .then((res) => res.json())
+      .then((data) => {
+        setGetTeams(data);
+      });
+  }, []);
+
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -17,48 +27,15 @@ const AllTeams = () => {
                     <th>Update</th>
                     <th>Delete</th>
                   </tr>
-                  <tr>
-                    <td>Alfreds</td>
-                    <td>Maria Anders</td>
-                    <td>Valorant</td>
-                    <td>Update</td>
-                    <td>Delete</td>
-                  </tr>
-                  <tr>
-                    <td>Centro </td>
-                    <td>Francisco Chang</td>
-                    <td>Cricket</td>
-                    <td>Update</td>
-                    <td>Delete</td>
-                  </tr>
-                  <tr>
-                    <td>Ernst</td>
-                    <td>Roland Mendel</td>
-                    <td>Football</td>
-                    <td>Update</td>
-                    <td>Delete</td>
-                  </tr>
-                  <tr>
-                    <td>Island</td>
-                    <td>Helen Bennett</td>
-                    <td>Valorant</td>
-                    <td>Update</td>
-                    <td>Delete</td>
-                  </tr>
-                  <tr>
-                    <td>Laughing</td>
-                    <td>Yoshi Tannamuri</td>
-                    <td>Cricket</td>
-                    <td>Update</td>
-                    <td>Delete</td>
-                  </tr>
-                  <tr>
-                    <td>Magazzini</td>
-                    <td>Giovanni Rovelli</td>
-                    <td>Football</td>
-                    <td>Update</td>
-                    <td>Delete</td>
-                  </tr>
+                  {getTeams.map((team) => (
+                    <tr key={team._id}>
+                      <td>{team.teamName}</td>
+                      <td>N/A</td>
+                      <td>{team.sportsName}</td>
+                      <td>Update</td>
+                      <td>Delete</td>
+                    </tr>
+                  ))}
                 </table>
               </div>
             </Grid>

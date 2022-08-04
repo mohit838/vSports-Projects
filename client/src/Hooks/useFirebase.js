@@ -29,7 +29,7 @@ const useFirebase = () => {
         setUser(newUser);
 
         // Send User to Backend
-        saveUserData();
+        saveUserData(email, name);
 
         // Must set display name
         updateProfile(auth.currentUser, {
@@ -108,7 +108,7 @@ const useFirebase = () => {
   const saveUserData = (email, displayName) => {
     const user = { email, displayName };
 
-    fetch("http://localhost:3000/api/users", {
+    fetch("http://localhost:5000/api/user", {
       method: "POST",
       headers: {
         "content-type": "application/json",
