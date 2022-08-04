@@ -37,6 +37,26 @@ async function run() {
     // Users Data
     // ======================================
 
+    // Get User Info
+    app.get("/api/users/:vid", async (req, res) => {
+      const vid = req.params.vid;
+      const query = { vid: vid };
+      const user = await userInfoCollections.findOne(query);
+
+      let isAdmin = false;
+      let isModerator = false;
+
+      if (user?.role === "admin") {
+        isAdmin = true;
+      }
+      if (user?.role === "moderator") {
+        isModerator = true;
+      }
+
+      // Sending Acknowledgement to Frontend
+      res.json({ admin: isAdmin, moderator: isModerator });
+    });
+
     // Post User Info
     app.post("/api/user", async (req, res) => {
       const newUserInfo = req.body;
@@ -49,11 +69,23 @@ async function run() {
     // ======================================
     // Creating Role
     // ======================================
+
+    // Create Admin
     app.put("/api/user/admin", async (req, res) => {
       const user = req.body;
-      console.log(user);
-      const filter = { vid: user.vid };
+      const filter = { vid: user.getGId };
       const updateDoc = { $set: { role: "admin" } };
+      const result = await userInfoCollections.updateOne(filter, updateDoc);
+
+      // Sending Acknowledgement to Frontend
+      res.json(result);
+    });
+
+    // Create Moderator
+    app.put("/api/user/moderator", async (req, res) => {
+      const user = req.body;
+      const filter = { vid: user.getGId };
+      const updateDoc = { $set: { role: "moderator" } };
       const result = await userInfoCollections.updateOne(filter, updateDoc);
 
       // Sending Acknowledgement to Frontend
