@@ -15,8 +15,6 @@ import DashBoardHome from "./Components/Dashboards/DashboardSetup/DashBoardHome/
 import NewTeam from "./Components/Dashboards/TeamsDashboard/NewTeam/NewTeam";
 import AllTeams from "./Components/Dashboards/TeamsDashboard/AllTeams/AllTeams";
 import NewModerator from "./Components/Dashboards/TeamsDashboard/NewModerator/NewModerator";
-import AllPlayers from "./Components/Dashboards/PlayerDashbaord/AllPlayers/AllPlayers";
-import NewPlayers from "./Components/Dashboards/ProfileDashboard/NewPlayers/NewPlayers";
 import TwoTeams from "./Components/Dashboards/DashboardSetup/DashBoardHome/Bracket/Two/TwoTeams";
 import FourTeams from "./Components/Dashboards/DashboardSetup/DashBoardHome/Bracket/FourTeams/FourTeams";
 import EightTeams from "./Components/Dashboards/DashboardSetup/DashBoardHome/Bracket/EightTeams/EightTeams";
@@ -25,6 +23,8 @@ import CreateTournaments from "./Components/Dashboards/TournamentDashBoard/Creat
 import DashboardContent from "./Components/Dashboards/DashboardSetup/DashBoardHome/DashboardContents/DashboardContent";
 import ProfileDetails from "./Components/Dashboards/ProfileDashboard/ProfileDetails/ProfileDetails";
 import AddRolePage from "./Components/Dashboards/ProfileDashboard/AddRolePage/AddRolePage";
+import AllPlayers from "./Components/Dashboards/PlayerDashbaord/AllPlayers/AllPlayers";
+import NewPlayers from "./Components/Dashboards/PlayerDashbaord/NewPlayers/NewPlayers";
 
 function App() {
   return (
