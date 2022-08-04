@@ -17,7 +17,7 @@ const PlayerDashBoard = () => {
         <div className="gamesNameLists">
           <nav>
             <Link to="">Player List</Link>
-            <Link to="create-player">Create Team</Link>
+            <Link to="create-player">Create Player</Link>
           </nav>
         </div>
       </Box>

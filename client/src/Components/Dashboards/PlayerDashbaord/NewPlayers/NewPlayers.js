@@ -1,9 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Button, Container, Grid, TextField } from "@mui/material";
+// import Radio from "@mui/material/Radio";
+// import RadioGroup from "@mui/material/RadioGroup";
+// import FormControlLabel from "@mui/material/FormControlLabel";
+// import FormControl from "@mui/material/FormControl";
+// import FormLabel from "@mui/material/FormLabel";
+
+const initialPlayerInfo = {
+  playerName: "",
+  gId: "",
+  sportsName: "",
+};
 
 const NewPlayers = () => {
-  const handleRegSubmit = () => {};
-  const handleOnBlur = () => {};
+  const [newPlayers, setNewPlayers] = useState(initialPlayerInfo);
+
+  const handleRegSubmit = (e) => {
+    // Collect data
+
+    // Send server
+
+    e.preventDefault();
+  };
+  const handleOnBlur = (e) => {
+    const field = e.target.name;
+    const value = e.target.value;
+    const newInfo = { ...newPlayers };
+    newInfo[field] = value;
+    setNewPlayers(newInfo);
+
+    console.log(newPlayers);
+  };
 
   return (
     <>
@@ -18,7 +45,7 @@ const NewPlayers = () => {
                   id="standard-basic"
                   label="Player Name"
                   variant="standard"
-                  name="teamName"
+                  name="playerName"
                   type="text"
                   onBlur={handleOnBlur}
                 />
@@ -26,7 +53,7 @@ const NewPlayers = () => {
                   required
                   sx={{ width: "75%", mt: 5 }}
                   id="standard-basic"
-                  label="Player ID"
+                  label="Player gID"
                   variant="standard"
                   name="gId"
                   type="number"
@@ -38,10 +65,49 @@ const NewPlayers = () => {
                   id="standard-basic"
                   label="Sports"
                   variant="standard"
-                  name="sports"
+                  name="sportsName"
                   type="text"
                   onBlur={handleOnBlur}
                 />
+                {/* Choose sports */}
+                {/* <FormControl>
+                  <FormLabel
+                    required
+                    sx={{ width: "75%", mt: 5 }}
+                    id="demo-row-radio-buttons-group-label"
+                  >
+                    Sports
+                  </FormLabel>
+
+                  <RadioGroup
+                    required
+                    row
+                    aria-labelledby="demo-row-radio-buttons-group-label"
+                    name="row-radio-buttons-group"
+                  >
+                    <FormControlLabel
+                      value="valorant"
+                      control={<Radio />}
+                      label="Valorant"
+                      name="sportsName"
+                      onBlur={handleOnBlur}
+                    />
+                    <FormControlLabel
+                      value="cricket"
+                      control={<Radio />}
+                      label="Cricket"
+                      name="sportsName"
+                      onBlur={handleOnBlur}
+                    />
+                    <FormControlLabel
+                      value="football"
+                      control={<Radio />}
+                      label="Football"
+                      name="sportsName"
+                      onBlur={handleOnBlur}
+                    />
+                  </RadioGroup>
+                </FormControl> */}
 
                 <br></br>
                 <Button

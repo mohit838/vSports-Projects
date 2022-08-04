@@ -11,7 +11,7 @@ const ProfileDashboard = () => {
           tag="div"
           className="display-6 pb-3 mb-3 border-bottom text-center"
         >
-          Players
+          Profile Details
         </MDBTypography>
         <div className="gamesNameLists">
           <nav>
