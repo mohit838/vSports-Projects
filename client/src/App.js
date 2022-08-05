@@ -25,6 +25,7 @@ import AddRolePage from "./Components/Dashboards/ProfileDashboard/AddRolePage/Ad
 import AllPlayers from "./Components/Dashboards/PlayerDashbaord/AllPlayers/AllPlayers";
 import NewPlayers from "./Components/Dashboards/PlayerDashbaord/NewPlayers/NewPlayers";
 import YourTournaments from "./Components/Dashboards/TournamentDashBoard/YourTournaments/YourTournaments";
+import AdminRoute from "./Components/Auth/Login/AdminRoute/AdminRoute";
 
 function App() {
   return (
@@ -44,14 +45,19 @@ function App() {
 
               <Route path="profile" element={<ProfileDashboard />}>
                 <Route path="" element={<ProfileDetails />} />
-                <Route path="add-role" element={<AddRolePage />} />
+
+                <Route element={<AdminRoute />}>
+                  <Route path="add-role" element={<AddRolePage />} />
+                </Route>
               </Route>
 
               <Route path="tournament" element={<TournamentDashBoard />}>
-                <Route path="" element={<CreateTournaments />} />
-                <Route path="two-team" element={<TwoTeams />} />
-                <Route path="four-team" element={<FourTeams />} />
-                <Route path="eight-team" element={<EightTeams />} />
+                <Route element={<AdminRoute />}>
+                  <Route path="" element={<CreateTournaments />} />
+                  <Route path="two-team" element={<TwoTeams />} />
+                  <Route path="four-team" element={<FourTeams />} />
+                  <Route path="eight-team" element={<EightTeams />} />
+                </Route>
                 <Route path="" element={<YourTournaments />} />
               </Route>
 
