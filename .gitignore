@@ -1,3 +1,4 @@
 # dependencies and env files
 /node_modules
 .env
+gsports449-firebase-adminsdk.json

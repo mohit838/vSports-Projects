@@ -7,7 +7,7 @@ require("dotenv").config();
 const port = process.env.PORT || 5000;
 
 // Firebase Admin Token
-const serviceAccount = require("./gsports449-firebase-adminsdk.json");
+const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNTS);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
