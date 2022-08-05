@@ -92,7 +92,7 @@ const useFirebase = () => {
 
   // To Control Admin Role bsed actions
   useEffect(() => {
-    fetch(`http://localhost:5000/api/users/${user.email}`)
+    fetch(`https://vsportsg.herokuapp.com/api/users/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.admin) {
@@ -124,7 +124,7 @@ const useFirebase = () => {
   const saveUserData = (email, displayName, vid) => {
     const user = { email, displayName, vid };
 
-    fetch("http://localhost:5000/api/user", {
+    fetch("https://vsportsg.herokuapp.com/api/user", {
       method: "POST",
       headers: {
         "content-type": "application/json",
