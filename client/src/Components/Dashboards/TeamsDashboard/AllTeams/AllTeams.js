@@ -5,7 +5,7 @@ const AllTeams = () => {
   const [getTeams, setGetTeams] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/teams")
+    fetch("https://vsportsg.herokuapp.com/api/teams")
       .then((res) => res.json())
       .then((data) => {
         setGetTeams(data);
