@@ -1,9 +1,17 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const admin = require("firebase-admin");
 const { MongoClient, ServerApiVersion } = require("mongodb");
 require("dotenv").config();
 const port = process.env.PORT || 5000;
+
+// Firebase Admin Token
+const serviceAccount = require("./gsports449-firebase-adminsdk.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+});
 
 // Middlewire
 app.use(cors());
@@ -18,6 +26,21 @@ const client = new MongoClient(uri, {
   useUnifiedTopology: true,
   serverApi: ServerApiVersion.v1,
 });
+
+// Verifing jwt token
+async function verifyToken(req, res, next) {
+  if (req.headers.authorization?.startsWith("Bearer ")) {
+    const token = req.headers.authorization.split(" ")[1];
+
+    try {
+      const decodedUser = await admin.getAuth().verifyIdToken(token);
+
+      req.decodedEmail = decodedUser.email;
+    } catch {}
+  }
+
+  next();
+}
 
 async function run() {
   try {
@@ -82,14 +105,24 @@ async function run() {
     // ======================================
 
     // Create Admin
-    app.put("/api/user/admin", async (req, res) => {
+    app.put("/api/user/admin", verifyToken, async (req, res) => {
       const user = req.body;
-      const filter = { vid: user.getGId };
-      const updateDoc = { $set: { role: "admin" } };
-      const result = await userInfoCollections.updateOne(filter, updateDoc);
+      const requseter = req.decodedEmail;
 
-      // Sending Acknowledgement to Frontend
-      res.json(result);
+      if (requseter) {
+        const reqAcc = await userInfoCollections.find({ email: requseter });
+
+        if (reqAcc.role === "admin") {
+          const filter = { vid: user.getGId };
+          const updateDoc = { $set: { role: "admin" } };
+          const result = await userInfoCollections.updateOne(filter, updateDoc);
+
+          // Sending Acknowledgement to Frontend
+          res.json(result);
+        } else {
+          res.status(403).json({ message: "Unauthorized" });
+        }
+      }
     });
 
     // Create Moderator

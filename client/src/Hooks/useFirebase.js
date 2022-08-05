@@ -6,6 +6,7 @@ import {
   signOut,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  getIdToken,
   updateProfile,
 } from "firebase/auth";
 
@@ -18,6 +19,7 @@ const useFirebase = () => {
   const [authError, setAuthError] = useState("");
   const [admin, setAdmin] = useState(false);
   const [moderator, setModerator] = useState(false);
+  const [authToken, setAuthToken] = useState("");
 
   const auth = getAuth();
 
@@ -82,6 +84,9 @@ const useFirebase = () => {
     const unSubcribed = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
+        getIdToken(user).then((idToken) => {
+          setAuthToken(idToken);
+        });
       } else {
         setUser({});
       }
@@ -140,6 +145,7 @@ const useFirebase = () => {
     isLoading,
     createNewUser,
     authError,
+    authToken,
     signIn,
     logOut,
   };

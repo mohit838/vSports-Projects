@@ -1,8 +1,11 @@
 import { Box, Button, TextField } from "@mui/material";
 import React, { useState } from "react";
+import useAuth from "../../../../Hooks/useAuth";
 
 const AddRolePage = () => {
   const [getGId, setGetGId] = useState();
+
+  const { authToken } = useAuth();
 
   const handleOnBlur = (e) => {
     setGetGId(e.target.value);
@@ -14,6 +17,7 @@ const AddRolePage = () => {
     fetch("https://vsportsg.herokuapp.com/api/user/admin", {
       method: "PUT",
       headers: {
+        authorization: `Bearer ${authToken}`,
         "content-type": "application/json",
       },
       body: JSON.stringify(user),
