@@ -22,7 +22,6 @@ const TournamentDashBoard = () => {
             {admin && (
               <>
                 <Link to="">Create Tournament</Link>
-                <Link to="add-team">Add Team</Link>
                 <Link to="two-team">Two Team</Link>
                 <Link to="four-team">Four Team</Link>
                 <Link to="eight-team">Eight Team</Link>

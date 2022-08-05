@@ -18,7 +18,6 @@ import NewModerator from "./Components/Dashboards/TeamsDashboard/NewModerator/Ne
 import TwoTeams from "./Components/Dashboards/DashboardSetup/DashBoardHome/Bracket/Two/TwoTeams";
 import FourTeams from "./Components/Dashboards/DashboardSetup/DashBoardHome/Bracket/FourTeams/FourTeams";
 import EightTeams from "./Components/Dashboards/DashboardSetup/DashBoardHome/Bracket/EightTeams/EightTeams";
-import AddTeamForBracket from "./Components/Dashboards/DashboardSetup/DashBoardHome/Bracket/AddTeamForBracket/AddTeamForBracket";
 import CreateTournaments from "./Components/Dashboards/TournamentDashBoard/CreateTournaments/CreateTournaments";
 import DashboardContent from "./Components/Dashboards/DashboardSetup/DashBoardHome/DashboardContents/DashboardContent";
 import ProfileDetails from "./Components/Dashboards/ProfileDashboard/ProfileDetails/ProfileDetails";
@@ -50,7 +49,6 @@ function App() {
 
               <Route path="tournament" element={<TournamentDashBoard />}>
                 <Route path="" element={<CreateTournaments />} />
-                <Route path="add-team" element={<AddTeamForBracket />} />
                 <Route path="two-team" element={<TwoTeams />} />
                 <Route path="four-team" element={<FourTeams />} />
                 <Route path="eight-team" element={<EightTeams />} />
